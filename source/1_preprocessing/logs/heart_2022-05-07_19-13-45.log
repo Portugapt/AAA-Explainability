@@ -1,0 +1,14 @@
+DEBUG:root:Load dataset from /home/portugapt/Documents/AAA-Projeto/source/1_preprocessing/../artifacts/data/heart/heart_raw.csv
+INFO:root:Create copy of dataset
+DEBUG:root:FEATURE HeartDisease TO BOOL
+DEBUG:root:FEATURE Smoking TO BOOL
+DEBUG:root:FEATURE AlcoholDrinking TO BOOL
+DEBUG:root:FEATURE Stroke TO BOOL
+DEBUG:root:FEATURE DiffWalking TO BOOL
+DEBUG:root:FEATURE Diabetic TO BOOL
+DEBUG:root:FEATURE PhysicalActivity TO BOOL
+DEBUG:root:FEATURE Asthma TO BOOL
+DEBUG:root:FEATURE KidneyDisease TO BOOL
+DEBUG:root:FEATURE SkinCancer TO BOOL
+INFO:root:Imports loaded
+INFO:root:Imports loaded
