@@ -18,17 +18,30 @@ Será mais importante validar os tipos das colunas (string/bool/etc), e tomar de
 
 É depois é analisar a falta de dados. O threshold está nos 10%. Se faltarem mais do que 10% de dados, remove-se a coluna. Não é preciso estar com muito mais. Se se vir que é fácil de fazer imputação a uma variável em especifico, seria interessante. Imputação com KNN é Boilerplate.  
 
-Ver também as distribuições das variávels, mas não perder muito tempo nesta parte.  
+Ver também as distribuições das variávels, mas não perder muito tempo nesta parte. 
+Ter em atenção a:
+* Outliers
+* Tipos de distribuição
+
 
 As correlações entre variáveis possívelmente vão chatear bastante no SHAP e no LIME, visto que estão correlacionadas, vou fazer uma conjetura na medida em que o peso das variáveis na decisão feita pelo modelo está distrubuida por todas as variáveis, e se há duas que contribuem com info muito parecida, o peso delas vai estar mais ou menos dividido. Seria uma questão interessante a ver. ((Adicionado no Report.md))
 
 Depois é ver o que fazemos com o que temos.
 
+Part 1:
+
 * [ ] Column types
-* [ ] Missing Data
+* [X] Missing Data
 * [ ] Distribution
 * [ ] Correlations
-* [ ] Next Steps
+
+Part 2:
+
+* [ ] Outliers
+* [ ] Scaling
+* [ ] Feature Engineering
+
+
 
 ----
 
