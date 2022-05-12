@@ -1,0 +1,5 @@
+INFO:2022-05-12 22:11:23,951:Imports loaded
+INFO:2022-05-12 22:12:06,248:Load dataset from /home/portugapt/Documents/AAA-Projeto/source/2_preparation/../artifacts/data/heart/heart_preprocessed.parquet
+INFO:2022-05-12 22:12:12,437:Load dataset from /home/portugapt/Documents/AAA-Projeto/source/2_preparation/../artifacts/data/heart/heart_preprocessed.parquet
+INFO:2022-05-12 22:30:27,864:Imports loaded
+INFO:2022-05-12 22:30:30,079:Load dataset from /home/portugapt/Documents/AAA-Projeto/source/2_preparation/../artifacts/data/heart/heart_preprocessed.parquet
