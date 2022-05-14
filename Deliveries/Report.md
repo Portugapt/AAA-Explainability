@@ -1,10 +1,92 @@
-# Capabilities of LIME and SHAP
+# A Study of SHAP and LIME, comparisons and limitations in two datasets.
+
+- [A Study of SHAP and LIME, comparisons and limitations in two datasets.](#a-study-of-shap-and-lime-comparisons-and-limitations-in-two-datasets)
+  - [Abstract](#abstract)
+  - [What is LIME?](#what-is-lime)
+  - [What is SHAP?](#what-is-shap)
+    - [Questions](#questions)
+    - [Introduction](#introduction)
+    - [Additive Feature Attribution Methods](#additive-feature-attribution-methods)
+      - [Definition 1: **Additive feature attribution methods**](#definition-1-additive-feature-attribution-methods)
+      - [LIME](#lime)
+  - [Problem definition](#problem-definition)
+  - [Challenges](#challenges)
+  - [Results](#results)
 
 ## Abstract
 
 ## What is LIME?
 
 ## What is SHAP?
+
+SHAP assigns each feature an importance value for a particular prediction. 
+
+Novel components
+
+- Identification of a new class of additive feature importance measures  
+- theoretical results showing there is a unique solution in this class with a set of desirable properties.
+
+This set of desirable properties is missing in recent proposals. 
+### Questions
+
+What is the set of desirable properties?
+
+How does this mapping function works?
+
+What is going to be $g(z')$ in definition 1?
+
+### Introduction
+
+Interpretation of prediction model's output garners user trust, provides insight into how the model may be improved, and helps understanding of the process being modeled. Sometimes, model engineering gravitates towards simpler models with more interpretability in a trade-off for more complex models with more accuracy.  
+
+Findings:  
+
+1. Any explanation of a model's prediction as a model itself. (*explanation model*) Six current methods unified which the authors defined as *additive feature attribution methods* (Section 2)
+2. Garantee of a unique solution, coming from game theory, in the class of additive feature attribution methods (Section 3), and SHAP *values* as the unified measure of importance for those 6 methods approximations. 
+3. SHAP value estimation methods are better aligned with human intuition, and effectually discriminate model output classes. (Section 5)
+
+### Additive Feature Attribution Methods
+
+We must create a simpler *explanation model* for more complex models, which is defined as an interpretable approximation of the original model. Six current explanation methods from literature use the same *explanation model*, and this unity of all them has not been appreciated.
+
+------
+
+Local methods
+
+- Let $f$ be the original prediction model.
+- Let $g$ be the explanation model.
+- LIME: Explanation of prediction $f(x)$ based on single input $x$
+
+Often, explanation models:  
+
+- *Simplified inputs* $x{'}$, map original input through mapping function $x = h_{x}(x')$
+- Local methods, $g(z') \approx f(h_{x}(z'))$, whenever $z' \approx x'$
+- Note: $h_{x}$ is specific to current input $x$
+- Note: So $h_{x}(x') = x$, even though $x'$ contains less info than $x$
+
+#### Definition 1: **Additive feature attribution methods**  
+
+Linear function of **binary variables** 
+
+* $z' \in \{0, 1\}^{M}$ (either 0 or 1)
+* $M$ is the the number of simplified input features
+* $\phi_{i} \in \mathbb{R}$ (any number)
+
+$$ g(z') = \phi + \sum_{i=1}^{M} \phi_{i}z'_{i} $$
+(Equation 1)
+
+So, it's $\phi_{0}$ + the weight of each $\phi$, if the feature $z'_{i}$ is present in the simplified features. (1 -> Present, 0 -> Not Present). $g(z')$ is going to be ???[IN QUESTIONS]
+
+#### LIME
+
+The LIME method interprets individual model predictions based on locally approximating the model around a given prediction.
+
+* simplified inputs $x'$ as "interpretable inputs"
+* Mapping $x = h_{x}(x')$ converts binary vector of "interpretable inputs" into original input space.
+* Different types of $x = h_{x}(x')$ for different input spaces.
+
+Objective function:
+$$\xi = \underset{g \in \varrho}{arg min} L(f, g, \pi_{x'} + \Omega(g)$$
 
 ## Problem definition
 
