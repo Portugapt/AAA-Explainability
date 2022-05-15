@@ -12,9 +12,12 @@
       - [DeepLIFT](#deeplift)
       - [Layer-Wise Relevance Propagation](#layer-wise-relevance-propagation)
       - [Classic Shapley Value Estimation](#classic-shapley-value-estimation)
+        - [Shapley regression values](#shapley-regression-values)
+  - [Introduction](#introduction-1)
   - [Problem definition](#problem-definition)
   - [Challenges](#challenges)
   - [Results](#results)
+  - [References](#references)
 
 ## Abstract
 
@@ -37,6 +40,12 @@ What is the set of desirable properties?
 How does this mapping function works?
 
 What is going to be $g(z')$ in definition 1?
+
+* Cooperative game theory equations
+  * classic equations
+  * Shapley regression values
+  * Shapley sampling values
+  * quantitative input influence
 
 ### Introduction
 
@@ -128,8 +137,28 @@ We can see it as a special case of DeepLIFT. The equation also matches equation 
 
 #### Classic Shapley Value Estimation
 
+There are three methods that use classic equations from cooperative game thoory to compute explanatations of model predictions:
+* Shpaley regression values
+* Shapley sampling values
+* Quantitative Input Influence
 
+##### Shapley regression values
 
+* $F$ is the set of all fetures.
+* Retraining of the model on all feature subsets $S \subseteq F$
+* Model $f_{S \cup \{i\}}$ trained with feature present; Model $f_S$ with feature withheld;
+* Compare models on current input $f_{S \cup \{i\}}(x_{S \cup \{i\}}) - f_{S} (x_S)$; $x_S$ are the values of the input features in the set $S$
+* Effect of withholding a feature is calculated.
+* The preciding differences are computed for all possible subsets $S \subseteq F / \{i\}$
+
+They are a weighted average of all possible differences:
+![imgshapreg](https://i.imgur.com/JGRKbRy.png)
+
+## Introduction
+
+This project consists in making a study of the available and most used model explanation tools that currently exists. Namely, SHAP <a href="#Shap-ref-1">\[1\]</a>
+
+c
 ## Problem definition
 
 Another question we tried to answer was if adding or removing a low importance feature impacted the importance of other features in a significant way. 
@@ -141,3 +170,10 @@ One other question we tried to answer was if we train the model with two highly 
 ## Challenges
 
 ## Results
+
+## References
+
+<a href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">Lundberg, Scott M., and Su-In Lee. "A unified approach to interpreting model predictions." Advances in neural information processing systems 30 </a>[(2017)](#Shap-ref-1)
+
+
+[1]: https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
