@@ -151,14 +151,13 @@ There are three methods that use classic equations from cooperative game thoory 
 * Effect of withholding a feature is calculated.
 * The preciding differences are computed for all possible subsets $S \subseteq F / \{i\}$
 
-They are a weighted average of all possible differences:
+They are a weighted average of all possible differences:  
 ![imgshapreg](https://i.imgur.com/JGRKbRy.png)
 
 ## Introduction
 
-This project consists in making a study of the available and most used model explanation tools that currently exists. Namely, SHAP <a href="#Shap-ref-1">\[1\]</a>
+This project consists in making a study of the available model explanation tools that are currently being used the most. Namely, SHAP [\[1\]](#SHAP-ref-1) and LIME [\[2\]](#LIME-ref-1). This topic interested us bacause nowadays, with a booming of Machine Learning and complex, black-box models, it's difficult to trust models that aren't transparent and fully understood, even more when they pilot critical decisions [\[3\]](#why-explainable-ai-ref-1) in varios aspects of our lives and businesses. We decided to setup an experiment to evaluate the contrast between the two mentioned tools.
 
-c
 ## Problem definition
 
 Another question we tried to answer was if adding or removing a low importance feature impacted the importance of other features in a significant way. 
@@ -173,4 +172,8 @@ One other question we tried to answer was if we train the model with two highly 
 
 ## References
 
-<a id="Shap-ref-1" href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">Lundberg, Scott M., and Su-In Lee. "A unified approach to interpreting model predictions." Advances in neural information processing systems 30 (2017)</a>
+[1] <a id="SHAP-ref-1" href="https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html">Lundberg, Scott M., and Su-In Lee. "A unified approach to interpreting model predictions." Advances in neural information processing systems 30 (2017)</a>
+
+[2] <a id="LIME-ref-1" href="https://dl.acm.org/doi/abs/10.1145/2939672.2939778">Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "" Why should i trust you?" Explaining the predictions of any classifier." Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. 2016.</a>
+
+[3] <a id="why-explainable-ai-ref-1" href="https://cloud.google.com/blog/products/ai-machine-learning/why-you-need-to-explain-machine-learning-models">“Why You Need to Explain Machine Learning Models | Google Cloud Blog.” Google</a>
