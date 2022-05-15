@@ -9,6 +9,9 @@
     - [Additive Feature Attribution Methods](#additive-feature-attribution-methods)
       - [Definition 1: **Additive feature attribution methods**](#definition-1-additive-feature-attribution-methods)
       - [LIME](#lime)
+      - [DeepLIFT](#deeplift)
+      - [Layer-Wise Relevance Propagation](#layer-wise-relevance-propagation)
+      - [Classic Shapley Value Estimation](#classic-shapley-value-estimation)
   - [Problem definition](#problem-definition)
   - [Challenges](#challenges)
   - [Results](#results)
@@ -75,7 +78,7 @@ Linear function of **binary variables**
 $$ g(z') = \phi + \sum_{i=1}^{M} \phi_{i}z'_{i} $$
 (Equation 1)
 
-So, it's $\phi_{0}$ + the weight of each $\phi$, if the feature $z'_{i}$ is present in the simplified features. (1 -> Present, 0 -> Not Present). $g(z')$ is going to be ???[IN QUESTIONS]
+So, it's $\phi_{0}$ + the weight of each $\phi$, if the feature $z'_{i}$ is present in the simplified features. (1 -> Present, 0 -> Not Present). $g(z')$ is the *explanation model*
 
 #### LIME
 
@@ -86,11 +89,52 @@ The LIME method interprets individual model predictions based on locally approxi
 * Different types of $x = h_{x}(x')$ for different input spaces.
 
 Objective function:
-$$\xi = \underset{g \in \varrho}{arg min} L(f, g, \pi_{x'} + \Omega(g)$$
+$$\xi = \underset{g \in \varrho}{arg min} L(f, g, \pi_{x'} + \Omega(g)$$  
+(Equation 2)
+
+* Faithfulness (Approximation to) of the **explanation model** $g(z')$ to the **original model** $f(h_{x}(z'))$ is enforced through the loss $L$ (Squared Loss) over a set of samples in the *simplified input space* $(x')$
+* Weighted by the local kernel $\pi_{x'}$.
+* $\Omega$ penalizes the complexity of g.
+* Equation 2 can be solved using penalized linear regression.
+
+#### DeepLIFT
+
+Recursive prediction explanation method for deep learning.  
+Input $x_i$ has a value $C_{\Delta x_i \Delta y}$ that is equal to effect of that input being set to a **reference value**. (Default value) 
+The mapping $x = h_{x}(x')$ converts binary values into the original inputs. 1 -> Input takes original value, 0 -> Input takes reference value.
+> The reference value, though chosen by the user, represents a typical uninformative background value for the feature.
+
+"summation-to-delta" property that states:  
+$$\sum_{i=1}^{n} C_{\Delta x_i \Delta o} = \Delta_O$$
+(Equation 3)
+
+* $o = f(x)$ --> Model Output
+* $\Delta_O = f(x) - f(r)$
+* $\Delta x_i = x_i - r_i$ 
+* r --> Referenee input
+
+If then: 
+
+* $\phi_i = C_{\Delta x_i \Delta o}$ 
+* $\phi_0 = f(r)$
+
+We get equation (1) again, making DeepLIFT another additive feature attribution method.
+
+#### Layer-Wise Relevance Propagation
+
+> This menthod is equivalent to DeepLIFT with the reference activations of all neurons fixed to zero. 
+
+We can see it as a special case of DeepLIFT. The equation also matches equation (1)
+
+#### Classic Shapley Value Estimation
+
+
 
 ## Problem definition
 
-Another question we tried to answer was if adding or removing a low importance feature impacted the importance of other features in a significant way. ((Maneira interessante de adicionar estatística aqui no meio, possivelmente vai dar para comparar os resultados de um antes e depois, e se a diferença der uma distribuição é porque tem impacto, se a diferença der um gráfico aleatorio, então é porque não tem impacto. Deve ser mais ou menos isto. É possível adicionar testes de hipoteses aqui no meio, o que seria mel.)) 
+Another question we tried to answer was if adding or removing a low importance feature impacted the importance of other features in a significant way. 
+
+> <<((Maneira interessante de adicionar estatística aqui no meio, possivelmente vai dar para comparar os resultados de um antes e depois, e se a diferença der uma distribuição é porque tem impacto, se a diferença der um gráfico aleatorio, então é porque não tem impacto. Deve ser mais ou menos isto. É possível adicionar testes de hipoteses aqui no meio, o que seria mel.)) 
 
 Se a questão anterior for que não há diferenças significativas:
 One other question we tried to answer was if we train the model with two highly correlated features, something that didn't happen in normal circumstances, will it impact the previosly present feature importance?
