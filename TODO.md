@@ -1,10 +1,11 @@
 # TODO
 
-Trocamos uma das datasets? O prof queixou-se porque de facto as datasets são parecidas em estrutura.
+- [TODO](#todo)
+  - [TODO](#todo-1)
+  - [IN PROGESS](#in-progess)
+  - [DONE](#done)
 
------
-
-* [X] Adicionar o PDF da proposta à pasta deliveries/
+## TODO 
 
 -----
 
@@ -19,8 +20,6 @@ As correlações entre variáveis possívelmente vão chatear bastante no SHAP e
 
 Part 1:
 
-* [ ] Column types
-* [X] Missing Data
 * [ ] Distribution
 * [ ] Correlations
 
@@ -39,6 +38,11 @@ Eu queria ver se ia-se já adicionando nem que fossem só notas no Report.md, de
 
 * [ ] Ler Papers
   * [ ] LIME-1 (Why should i trust you?: Explaining the predictions of any classifier.)
+
+
+## IN PROGESS
+
+* [ ] Ler Papers
   * [ ] SHAP-1 (A Unified Approach to Interpretin ModelPredictions)
 
 ## DONE 
@@ -52,3 +56,8 @@ Será mais importante validar os tipos das colunas (string/bool/etc), e tomar de
 
 
 É depois é analisar a falta de dados. O threshold está nos 10%. Se faltarem mais do que 10% de dados, remove-se a coluna. Não é preciso estar com muito mais. Se se vir que é fácil de fazer imputação a uma variável em especifico, seria interessante. Imputação com KNN é Boilerplate.  
+
+Part 1: 
+
+* [x] Column types
+* [X] Missing Data
