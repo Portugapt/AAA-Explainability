@@ -20,8 +20,8 @@ As correlações entre variáveis possívelmente vão chatear bastante no SHAP e
 
 Part 1:
 
-* [ ] Distribution
 * [ ] Correlations
+ADD TO REPORT
 
 Part 2:
 
