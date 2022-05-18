@@ -19,7 +19,7 @@
   - [Preprocessing](#preprocessing)
     - [Dataset (1) - Heart Dataset](#dataset-1---heart-dataset)
   - [Processing](#processing)
-    - [Dataset (1) Imbalanced Data](#dataset-1-imbalanced-data)
+    - [Dataset (1) - Imbalanced Data](#dataset-1---imbalanced-data)
   - [Results](#results)
   - [References](#references)
 
@@ -186,13 +186,26 @@ We started analysing this dataset by looking at the missing values. What we foun
 The column types were not optimal, as most features were encoded as strings of `Yes`/`No`. `GenHealth` was [!]scalar (`Poor` to `Excellent`), and encoded as string. `Gender` was a string of `Female`/`Male`.
 Other features like `Diabetic` and `Race` are completely categoric.  
 We decided to turn the `Yes`/`No` features into `boolean`, `GenHealth` into a sequence of integers from `1` to `5`, `Gender` into `0`/`1`, and to the purely categorical features, we applied the `OneHotEncoder` implementation from `sklearn`.  
-The distributions of 
+The distributions of target feature was the following  
+
+![h-pre-target-count](resources/heart_preprocessing_targetCount.png)
+<tag id="fig-h-pre-target-count">Plot 1</tag> - The frequency of Heart Disease patients. Here we can denote an unbalance in the dataset. With this in mind, we decided to experiment with over and under sampling techniques further ahead.
+
+Four of the features also displayed an imbalance on the data, being them `AlcoholDrinking`, `Stroke`, `KidneyDisease` and `SkinCancer`, all with only 10% of the observations being `True`.  
+![h-pre-features-count](resources/heart_preprocessing_imbalancedFeatures.png)
+<tag id="fig-h-pre-target-count">Plot 2</tag> - The frequency of the four mentioned features. Each has less than 10% of True observations. [!]
+
+One last feature that we think needs attention is the `BMI`. Because it's the only true continuous feature in our dataset. It's [graph]() shows a possibility of outlier candidates, which we will treat in the processing phase. 
+
+![h-pre-bmioutliers](resources/heart_preprocessing_bmiOutliers.png)
+
+<tag id="fig-h-pre-bmi-outliers">Plot 3</tag> - This distribution shows a tail after BMI with the value of 60. It has around 500 observations after this value.
 
 ## Processing
 
-### Dataset (1) Imbalanced Data
+### Dataset (1) - Imbalanced Data
 
-In our Dataset 1 (Heart Diseases), as mentioned before, the target class is unbalanced (Graph [!] ADICIONAR). We tried to attenuate this imbalance by using a combination of the SMOTE (Synthetic Minority Over-sampling Technique) [\[5\]](#smote-ref-1) technique for over-sampling and the Tomek links [\[6\]](#tomeklinks-ref-1) technique for down-sampling. SMOTE has been proven to be effective in literature. [\[4\]](#smote-effective-literature-ref-1),[\[7\]](#smote-effective-literature-ref-2)  
+In our Dataset 1 (Heart Diseases), as mentioned before, [the target class is imbalanced](#fig-h-pre-bmi-outliers)). We tried to attenuate this imbalance by using a combination of the SMOTE (Synthetic Minority Over-sampling Technique) [\[5\]](#smote-ref-1) technique for over-sampling and the Tomek links [\[6\]](#tomeklinks-ref-1) technique for down-sampling. SMOTE has been proven to be effective in literature. [\[4\]](#smote-effective-literature-ref-1),[\[7\]](#smote-effective-literature-ref-2)  
 We used the implementation in the *imblearn* library, by creating first the *SMOTE* and the *TomekLinks* Objects first, both with the parameter *n_jobs=-1*, for it to use all CPU cores available. Then we created the *SMOTETomek* object, also with *n_jobs=-1*. It had to be done this way, because the implementation is not optimized for a high volume of data, and it was both cpu-demanding and time-consuming (Over 3 hours) to obtain the results, even for a dataset with only ~350.000 observations.  
 The resulting dataset from this process
 
