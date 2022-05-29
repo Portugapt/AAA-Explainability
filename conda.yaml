@@ -16,3 +16,7 @@ dependencies:
     - phik==0.12.2
     - pyarrow==8.0.0
     - eli5==0.13.0
+    - mlflow==1.26.0
+    - protobuf==3.20.1
+    - psycopg2-binary
+    - pymysql
