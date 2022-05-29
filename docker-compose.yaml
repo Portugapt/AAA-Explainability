@@ -47,11 +47,6 @@ services:
         environment:
             - BACKEND=postgresql://${DB_USER}:${DB_PW}@db:${DB_PORT}/${DB_NAME}
             - ARTIFACTS=/source/artifacts/mlruns
-          # For artifact store in AWS S3 (note boto was installed in container):
-          #  - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-          #  - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-          #  - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-          #  - ARTIFACTS="s3://mlflow_bucket/mlflow/"
         volumes:
             - ./source/3_modeling/mlruns:/mlruns
             - condenv:/opt/conda
