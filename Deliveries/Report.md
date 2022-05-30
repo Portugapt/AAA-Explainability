@@ -178,7 +178,7 @@ One other question we tried to answer was if we train the model with two highly 
 
 ## Preprocessing
 
-This section is caracterized by the initial cleaning of data. Over the two datasets, we wiped the rows that had missing values, corrected the type of feature, e.g. from float to int, including the usage of OneHot Encoding for categorical features. In the end we also looked at the distributions of all features, on the lookout for outlier candidates. Finally, we looked at the correlations between features, so take some *a priori* notes on multicollinearity.
+This section is caracterized by the initial cleaning of data. Over the two datasets, we wiped the rows that had missing values, corrected the type of feature, e.g. from float to int, including the usage of OneHot Encoding for categorical features. In the end we also looked at the distributions of all features, on the lookout for outlier candidates. Finally, we looked at the correlations between features, to take some *a priori* notes on multicollinearity.
 
 ### Dataset (1) - Heart Dataset
 

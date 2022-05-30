@@ -62,6 +62,7 @@ services:
             - db
 
     jupyter:
+        restart: always
         build: ./jupyter
         image: jupyter_server
         container_name: jupyter_server
